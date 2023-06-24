@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/header';
 import {Button, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import Addinfo from '../Addinfo/addinfo';
 
 function Home({navigation}: any) {
   return (
@@ -13,6 +14,8 @@ function Home({navigation}: any) {
         <View>
           <Text style={styles.manage}>Manage your expenses</Text>
         </View>
+
+        <Addinfo />
         <Button
           title="First Screen"
           onPress={() => navigation.navigate('Design')}
