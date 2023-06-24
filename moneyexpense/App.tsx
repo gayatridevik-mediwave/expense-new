@@ -1,19 +1,51 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 
-import LinearGradient from 'react-native-linear-gradient';
-
-function App(): JSX.Element {
+import Home from './components/Home/home';
+import {Button, ImageBackground, StyleSheet, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import test from './assets/fonts/'
+function Design({navigation}: any) {
   return (
-    <LinearGradient
-      colors={['#08979D', '#46346e1c', '#48376a08', '#521cc203']}
-      style={styles.linearGradient}
-    />
+    <ImageBackground
+      resizeMode="cover"
+      style={styles.screenimage}
+      source={require('./assets/background.png')}>
+      <View style={styles.container}>
+        <Button
+          title="Second Screen"
+          onPress={() => navigation.navigate('Home')}
+        />
+      </View>
+    </ImageBackground>
+  );
+}
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          options={{headerShown: false}}
+          component={Home}
+        />
+        <Stack.Screen name="Design" component={Design} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  linearGradient: {
+  container: {
+    flex: 1,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 30,
+  },
+  screenimage: {
     flex: 1,
   },
 });
