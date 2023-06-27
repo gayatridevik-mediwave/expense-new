@@ -49,31 +49,34 @@ function Footer() {
 const styles = StyleSheet.create({
   background: {
     height: 80,
-    // borderColor: 'green',
-    // borderWidth: 4,
+    bottom: 0,
     backgroundColor: '#fff',
     justifyContent: 'center',
-    elevation: 2,
+    shadowOffset: {width: 2, height: 2},
+    shadowOpacity: 2,
+    shadowRadius: 2,
+    elevation: 5,
+    shadowColor: '#000',
   },
   footeralign: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
+    padding: 20,
   },
   addalign: {
     position: 'absolute',
     zIndex: 2,
     width: 23,
     height: 23,
-    // backgroundColor: 'black',
     top: 35,
     right: 34,
-    // bottom: 30,
   },
   imageback: {
+    position: 'relative',
     width: 88,
     height: 88,
-    marginBottom: 50,
+    marginBottom: 60,
   },
 });
 

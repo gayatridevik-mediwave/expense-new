@@ -1,11 +1,11 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-// import piggy from '/home/gayatri/Downloads/piggy.png';
-// import reminder from '../../assets/reminder.png';
+
 
 function Addinfo() {
   return (
-    <View>
+    <View style={{marginTop: 40, marginBottom: 50}}>
       <Text style={styles.addInfo}>Additional informations</Text>
       <View style={styles.info}>
         <TouchableOpacity style={styles.btninfo}>
@@ -32,17 +32,21 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   info: {
+    maxWidth: '100%',
     marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
   },
   btninfo: {
+    maxWidth: '100%',
+    maxHeight: '100%',
     width: 160,
     height: 100,
     backgroundColor: '#fff',
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    elevation: 4,
   },
   roundedbox: {
     justifyContent: 'center',
