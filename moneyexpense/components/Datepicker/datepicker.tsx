@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Calendar} from 'react-native-calendars';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Calendardate from '../../assets/dateyear';
 
 function Datepicker() {
   const [selected, setSelected] = useState('');
@@ -18,7 +19,6 @@ function Datepicker() {
           <Text
             style={{
               color: 'white',
-              fontFamily: 'Varela-Regular',
               fontSize: 23,
             }}>
             June 2023
@@ -29,16 +29,13 @@ function Datepicker() {
           <TouchableOpacity onPress={handleclick}>
             <View style={styles.calborder} />
 
-            <Image
-              style={styles.calendar}
-              source={require('../../assets/calendar.png')}
-            />
+            <Calendardate style={styles.calendar} />
           </TouchableOpacity>
         </View>
       </View>
       {showcalendar && (
         <Calendar
-        style={{width: '90%'}}
+          style={styles.calIconstyle}
           onDayPress={day => {
             setSelected(day.dateString);
           }}
@@ -70,13 +67,20 @@ const styles = StyleSheet.create({
     height: 18,
     top: 10,
     right: 12,
-    zIndex: 1,
   },
   monthyear: {
+    position: 'relative',
     marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  calIconstyle: {
+    maxWidth: '90%',
+    zIndex: 9,
+    position: 'absolute',
+    top: 0,
+    right: 0,
   },
 });
 

@@ -1,66 +1,63 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
-import MonenyDetails from '../../UserData/userdata';
 import {Text} from 'react-native';
-// import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-function Innercard() {
+function Innercard({data}: any) {
   return (
     <View>
-      <View>
-        <FlatList
-          data={MonenyDetails}
-          renderItem={({item}) => {
-            return (
-              <>
-                <View style={{}}>
-                  {item.categoryAmount.map(v => (
-                    <>
-                      <View style={styles.innercard}>
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                          }}>
-                          <View
-                            style={{
-                              width: 48,
-                              height: 48,
-                              backgroundColor: 'green',
-                              borderRadius: 30,
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                            }}>
-                            <Icon
-                              style={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                              }}
-                              name={v.catIcon}
-                              size={35}
-                              color="#fff"
-                            />
-                          </View>
-                          <Text style={{fontSize: 16, marginLeft: 15, color: '#272727'}}>
-                            {v.catTitle}
-                          </Text>
-                        </View>
+      <FlatList
+        data={data.categoryAmount}
+        renderItem={({item}) => {
+          return (
+            <>
+              <View style={{}}>
+                <View style={styles.innercard}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}>
+                    <View
+                      style={{
+                        width: 48,
+                        height: 48,
+                        backgroundColor: item.colorIcon,
+                        borderRadius: 30,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}>
+                      <Icon
+                        style={{
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}
+                        name={item.catIcon}
+                        size={35}
+                        color="#fff"
+                      />
+                    </View>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        marginLeft: 15,
+                        color: '#272727',
+                      }}>
+                      {item.catTitle}
+                    </Text>
+                  </View>
 
-                        <View>
-                          <Text style={{fontSize: 18}}>₹ {v.catAmount}</Text>
-                        </View>
-                      </View>
-                    </>
-                  ))}
+                  <View>
+                    <Text style={{fontSize: 18, color: item.colorPattern}}>₹ {item.catAmount}</Text>
+                  </View>
                 </View>
-              </>
-            );
-          }}
-        />
-      </View>
+              </View>
+            </>
+          );
+        }}
+      />
     </View>
   );
 }
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
   innercard: {
     backgroundColor: '#fff',
     maxWidth: '100%',
-    marginTop: 20,
+    marginBottom: 20,
     borderRadius: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
