@@ -7,7 +7,11 @@ import {
   ImageBackground,
 } from 'react-native';
 
-function Footer() {
+interface FooterProps {
+  onPressAddbtn: () => any;
+}
+
+const Footer: React.FC<FooterProps> = ({onPressAddbtn}) => {
   return (
     <View style={styles.background}>
       <View>
@@ -24,7 +28,7 @@ function Footer() {
             <ImageBackground
               style={styles.imageback}
               source={require('../../assets/circleback.png')}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onPressAddbtn}>
                 <Image
                   style={styles.addalign}
                   source={require('../../assets/add.png')}
@@ -44,7 +48,7 @@ function Footer() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   background: {

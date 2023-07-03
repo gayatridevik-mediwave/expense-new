@@ -4,6 +4,7 @@ import Home from './components/Home/home';
 import {Button, ImageBackground, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import AddExpense from './components/AddExpense/addexpense';
 // import test from './assets/fonts/'
 function Design({navigation}: any) {
   return (
@@ -33,6 +34,9 @@ function App() {
           component={Home}
         />
         <Stack.Screen name="Design" component={Design} />
+        {/* <Stack.Screen name="Design" component={Footer} /> */}
+        <Stack.Screen name="AddExpense" component={AddExpense} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

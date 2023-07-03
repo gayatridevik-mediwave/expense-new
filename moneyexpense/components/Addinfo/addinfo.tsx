@@ -34,8 +34,10 @@ const styles = StyleSheet.create({
   info: {
     maxWidth: '100%',
     marginTop: 10,
+    // marginLeft: -10,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   btninfo: {
     maxWidth: '100%',

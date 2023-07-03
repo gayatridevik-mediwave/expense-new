@@ -26,7 +26,7 @@ function Datepicker() {
           <Icon name="keyboard-arrow-right" size={30} color="#fff" />
         </View>
         <View>
-          <TouchableOpacity onPress={handleclick}>
+          <TouchableOpacity style={styles.outerCalendar} onPress={handleclick}>
             <View style={styles.calborder} />
 
             <Calendardate style={styles.calendar} />
@@ -55,10 +55,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   calborder: {
-    borderWidth: 2,
+    borderWidth: 3,
     borderRadius: 25,
     width: 40,
     height: 40,
+    backgroundColor: '#08979D',
     borderColor: '#fff',
   },
   calendar: {
@@ -69,15 +70,19 @@ const styles = StyleSheet.create({
     right: 12,
   },
   monthyear: {
-    position: 'relative',
+    // position: 'relative',
     marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  outerCalendar: {
+    position: 'relative',
+    // zIndex: 1,
+  },
   calIconstyle: {
     maxWidth: '90%',
-    zIndex: 9,
+    zIndex: 1,
     position: 'absolute',
     top: 0,
     right: 0,
