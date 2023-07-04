@@ -27,16 +27,18 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="AddExpense">
         <Stack.Screen
           name="Home"
           options={{headerShown: false}}
           component={Home}
         />
         <Stack.Screen name="Design" component={Design} />
-        {/* <Stack.Screen name="Design" component={Footer} /> */}
-        <Stack.Screen name="AddExpense" component={AddExpense} />
-
+        <Stack.Screen
+          name="AddExpense"
+          options={{headerShown: false}}
+          component={AddExpense}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

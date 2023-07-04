@@ -8,10 +8,10 @@ function Card() {
   return (
     <>
       <View style={styles.cardback}>
-        {MonenyDetails.map((item,index) => {
+        {MonenyDetails.map((item, index) => {
           return (
-            <View key={index} >
-              <View  style={styles.displayMonth}>
+            <View key={index}>
+              <View style={styles.displayMonth}>
                 <Text style={styles.displayContent}>{item.dateMonthYear}</Text>
               </View>
 
@@ -26,55 +26,56 @@ function Card() {
                   <Text style={styles.expenseText}>₹ {item.expAmt}</Text>
                 </View>
               </View>
-              {item.categoryAmount.map((category,idx) => {
+              {item.categoryAmount.map((category, idx) => {
                 return (
-                  <>
-                    <View key={idx} style={{}}>
-                      <View style={styles.innercard}>
+                  <View key={idx}>
+                    <View style={styles.innercard}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}>
                         <View
                           style={{
-                            flexDirection: 'row',
-                            justifyContent: 'space-between',
+                            width: 48,
+                            height: 48,
+                            backgroundColor: category.colorIcon,
+                            borderRadius: 30,
+                            justifyContent: 'center',
                             alignItems: 'center',
                           }}>
-                          <View
+                          <Icon
                             style={{
-                              width: 48,
-                              height: 48,
-                              backgroundColor: category.colorIcon,
-                              borderRadius: 30,
                               justifyContent: 'center',
                               alignItems: 'center',
-                            }}>
-                            <Icon
-                              style={{
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                              }}
-                              name={category.catIcon}
-                              size={35}
-                              color="#fff"
-                            />
-                          </View>
-                          <Text
-                            style={{
-                              fontSize: 16,
-                              marginLeft: 15,
-                              color: '#272727',
-                            }}>
-                            {category.catTitle}
-                          </Text>
+                            }}
+                            name={category.catIcon}
+                            size={35}
+                            color="#fff"
+                          />
                         </View>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            marginLeft: 15,
+                            color: '#272727',
+                          }}>
+                          {category.catTitle}
+                        </Text>
+                      </View>
 
-                        <View>
-                          <Text
-                            style={{fontSize: 18, color: category.colorPattern}}>
-                            ₹ {category.catAmount}
-                          </Text>
-                        </View>
+                      <View>
+                        <Text
+                          style={{
+                            fontSize: 18,
+                            color: category.colorPattern,
+                          }}>
+                          ₹ {category.catAmount}
+                        </Text>
                       </View>
                     </View>
-                  </>
+                  </View>
                 );
               })}
             </View>
@@ -91,7 +92,6 @@ const styles = StyleSheet.create({
     maxWidth: '100%',
     marginTop: 20,
     borderRadius: 20,
-    // flexDirection: 'row',
     padding: 20,
     justifyContent: 'space-between',
     shadowOffset: {width: 0, height: 2},

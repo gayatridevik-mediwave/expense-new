@@ -67,7 +67,6 @@ function Displayamt() {
           <Text
             style={{
               fontSize: 14,
-              // fontFamily: 'Varela-Regular',
               color: '#4D4D4D',
               marginTop: 3,
             }}>

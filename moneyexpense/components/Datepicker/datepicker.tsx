@@ -15,15 +15,15 @@ function Datepicker() {
     <>
       <View style={styles.monthyear}>
         <View style={styles.monthimage}>
-          <Icon name="keyboard-arrow-left" size={30} color="#fff" />
+          <Icon name="keyboard-arrow-left" size={30} color="#4D4D4D" />
           <Text
             style={{
-              color: 'white',
+              color: '#4D4D4D',
               fontSize: 23,
             }}>
             June 2023
           </Text>
-          <Icon name="keyboard-arrow-right" size={30} color="#fff" />
+          <Icon name="keyboard-arrow-right" size={30} color="#4D4D4D" />
         </View>
         <View>
           <TouchableOpacity style={styles.outerCalendar} onPress={handleclick}>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   monthyear: {
     // position: 'relative',
-    marginTop: 30,
+    // marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
