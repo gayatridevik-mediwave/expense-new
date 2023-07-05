@@ -1,11 +1,10 @@
 import React from 'react';
 import {ImageBackground, ScrollView, StyleSheet} from 'react-native';
 import Toggle from '../Toggle/toggle';
-// import Datepicker from '../Datepicker/datepicker';
 import ExpIncome from '../ExpIncome/expIncome';
 import Footer from '../Footer/footer';
 
-function AddExpense({navigation}: any) {
+function AddExpense() {
   return (
     <>
       <ImageBackground

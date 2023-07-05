@@ -2,28 +2,30 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 
-function Toggle() {
+function Toggle(navigation: any) {
   const [isExpense, setExpense] = useState(true);
   return (
     <>
       <View style={styles.headingexpense}>
         {/* <Button onPress={() => navigation.goBack()} title="hello world" /> */}
-        <TouchableOpacity style={styles.arrowicon}>
+        <TouchableOpacity
+          style={styles.arrowicon}
+          onPress={() => navigation.goBack()}>
           <Icon name="arrow-left-l" size={26} color="#fff" />
         </TouchableOpacity>
         <Text style={styles.expense}>Add expenses</Text>
       </View>
       <View style={styles.expincome}>
-        <View style={styles.toogleexpense}>
-          <TouchableOpacity style={{}} onPress={() => setExpense(!isExpense)}>
+        <View style={styles.toggleexpense}>
+          <TouchableOpacity style={{}} onPress={() => setExpense(true)}>
             <Text
-              style={[styles.tooglexpense, isExpense ? styles.active : null]}>
+              style={[styles.togglexpense, isExpense ? styles.active : null]}>
               Expenses
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{}} onPress={() => setExpense(!isExpense)}>
+          <TouchableOpacity style={{}} onPress={() => setExpense(false)}>
             <Text
-              style={[styles.tooglexpense, isExpense ? null : styles.active]}>
+              style={[styles.togglexpense, isExpense ? null : styles.active]}>
               Income
             </Text>
           </TouchableOpacity>
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
   },
   expincome: {},
 
-  toogleexpense: {
+  toggleexpense: {
     marginTop: 30,
     fontSize: 25,
     backgroundColor: '#7AD6DA',
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
     padding: 3,
   },
 
-  tooglexpense: {
+  togglexpense: {
     color: '#000',
     fontSize: 18,
     paddingHorizontal: 50,

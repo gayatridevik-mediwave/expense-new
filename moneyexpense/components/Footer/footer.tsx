@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 interface FooterProps {
-  onPressAddbtn: () => any;
+  onPressAddbtn?: () => any;
 }
 
 const Footer: React.FC<FooterProps> = ({onPressAddbtn}) => {
