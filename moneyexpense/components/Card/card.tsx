@@ -30,37 +30,19 @@ function Card() {
                 return (
                   <View key={idx}>
                     <View style={styles.innercard}>
-                      <View
-                        style={{
-                          flexDirection: 'row',
-                          justifyContent: 'space-between',
-                          alignItems: 'center',
-                        }}>
+                      <View style={styles.innercrdbtn}>
                         <View
-                          style={{
-                            width: 48,
-                            height: 48,
-                            backgroundColor: category.colorIcon,
-                            borderRadius: 30,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                          }}>
+                          style={[
+                            styles.backcoloricon,
+                            {backgroundColor: category.colorIcon},
+                          ]}>
                           <Icon
-                            style={{
-                              justifyContent: 'center',
-                              alignItems: 'center',
-                            }}
                             name={category.catIcon}
                             size={35}
                             color="#fff"
                           />
                         </View>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            marginLeft: 15,
-                            color: '#272727',
-                          }}>
+                        <Text style={styles.amtdisplay}>
                           {category.catTitle}
                         </Text>
                       </View>
@@ -114,6 +96,25 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderColor: 'green',
     padding: 15,
+  },
+  innercrdbtn: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  backcoloricon: {
+    width: 48,
+    height: 48,
+    borderRadius: 30,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  amtdisplay: {
+    fontSize: 16,
+    marginLeft: 15,
+    color: '#272727',
   },
 
   displayMonth: {

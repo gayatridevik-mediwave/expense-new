@@ -8,10 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Datepicker from '../Datepicker/datepicker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectDropdown from 'react-native-select-dropdown';
 import AddCategory from '../AddCategory/addcategory';
+import {Calendar} from 'react-native-calendars';
+import LeftIcon from 'react-native-vector-icons/MaterialIcons';
+import Calendardate from '../../assets/dateyear';
 function ExpIncome() {
   const Category = [
     {key: '1', value: 'Food', image: require('../../assets/food.png')},
@@ -19,10 +21,56 @@ function ExpIncome() {
     {key: '3', value: 'Geocery', image: require('../../assets/cart.png')},
   ];
   const [showcat, Setshowcat] = useState(false);
-
+  const [selected, setSelected] = useState('');
+  const [showcalendar, setShowcalendar] = useState(false);
+  const handleclick = () => {
+    setShowcalendar(!showcalendar);
+  };
   return (
     <View style={styles.cardback}>
-      <Datepicker />
+      <View style={styles.monthyear}>
+        <View style={styles.monthimage}>
+          <LeftIcon name="keyboard-arrow-left" size={30} color="#fff" />
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 23,
+            }}>
+            June 2023
+          </Text>
+          <Icon name="keyboard-arrow-right" size={30} color="#fff" />
+        </View>
+        <View style={{position: 'relative'}}>
+          <TouchableOpacity style={styles.outerCalendar} onPress={handleclick}>
+            <View style={styles.calborder} />
+
+            <Calendardate style={styles.calendar} />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {showcalendar && (
+        <Calendar
+          style={styles.calIconstyle}
+          theme={{
+            backgroundColor: '#ffffff',
+            calendarBackground: '#ffffff',
+            textSectionTitleColor: '#b6c1cd',
+            selectedDayBackgroundColor: '#00adf5',
+            selectedDayTextColor: '#ffffff',
+            todayTextColor: '#00adf5',
+            dayTextColor: '#2d4150',
+            textDisabledColor: '#d9e',
+          }}
+          onDayPress={day => {
+            setSelected(day.dateString);
+          }}
+          markedDates={{
+            [selected]: {selected: true, disableTouchEvent: true},
+          }}
+        />
+      )}
+
       <View>
         <View>
           <Text style={styles.callexpense}>Enter the amount</Text>
@@ -48,8 +96,7 @@ function ExpIncome() {
                         source={selectedItem.image}
                         style={styles.dropdownBtnImage}
                       />
-                    ) : // <Ionicons name="md-earth-sharp" size={32} />
-                    null}
+                    ) : null}
                     <Text style={styles.dropdownBtnTxt}>
                       {selectedItem ? selectedItem.value : 'Select category'}
                     </Text>
@@ -179,6 +226,7 @@ const styles = StyleSheet.create({
   callexpense: {
     marginTop: 20,
     fontSize: 18,
+    position: 'relative',
   },
   amountInput: {
     backgroundColor: '#fff',
@@ -221,6 +269,45 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     bottom: 10,
+  },
+  monthimage: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  calborder: {
+    borderWidth: 3,
+    borderRadius: 25,
+    width: 40,
+    height: 40,
+    backgroundColor: '#08979D',
+    borderColor: '#fff',
+  },
+  calendar: {
+    position: 'absolute',
+    width: 18,
+    height: 18,
+    top: 10,
+    right: 12,
+  },
+  monthyear: {
+    position: 'relative',
+    // marginTop: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  outerCalendar: {
+    position: 'relative',
+    zIndex: 1,
+  },
+  calIconstyle: {
+    maxWidth: '90%',
+    zIndex: 2,
+    position: 'absolute',
+    top: 0,
+    right: 0,
   },
 });
 

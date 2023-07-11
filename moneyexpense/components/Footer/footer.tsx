@@ -9,19 +9,21 @@ import {
 
 interface FooterProps {
   onPressAddbtn?: () => any;
+  handleStatistics?: () => any;
+  onHomebtn?: () => any;
 }
 
-const Footer: React.FC<FooterProps> = ({onPressAddbtn}) => {
+const Footer: React.FC<FooterProps> = ({onHomebtn,onPressAddbtn, handleStatistics}) => {
   return (
     <View style={styles.background}>
       <View>
         <View style={{}}>
           <View style={styles.footeralign}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={onHomebtn}>
               <Image source={require('../../assets/home.png')} />
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleStatistics}>
               <Image source={require('../../assets/stack.png')} />
             </TouchableOpacity>
 

@@ -4,7 +4,14 @@ import Toggle from '../Toggle/toggle';
 import ExpIncome from '../ExpIncome/expIncome';
 import Footer from '../Footer/footer';
 
-function AddExpense() {
+function AddExpense({navigation}: any) {
+  const handleStatistics = () => {
+    navigation.navigate('Statistics');
+  };
+  const onHomebtn = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <>
       <ImageBackground
@@ -12,11 +19,16 @@ function AddExpense() {
         resizeMode="cover"
         source={require('../../assets/background.png')}>
         <ScrollView>
-          <Toggle />
+          <Toggle
+            val={'Add Expenses'}
+            goBack={() => {
+              navigation.goBack();
+            }}
+          />
           <ExpIncome />
         </ScrollView>
       </ImageBackground>
-      <Footer />
+      <Footer onHomebtn={onHomebtn} handleStatistics={handleStatistics} />
     </>
   );
 }
@@ -66,6 +78,45 @@ const styles = StyleSheet.create({
     color: '#08979D',
     backgroundColor: '#fff',
     padding: 10,
+  },
+  monthimage: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  calborder: {
+    borderWidth: 3,
+    borderRadius: 25,
+    width: 40,
+    height: 40,
+    backgroundColor: '#08979D',
+    borderColor: '#fff',
+  },
+  calendar: {
+    position: 'absolute',
+    width: 18,
+    height: 18,
+    top: 10,
+    right: 12,
+  },
+  monthyear: {
+    // position: 'relative',
+    // marginTop: 30,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  outerCalendar: {
+    position: 'relative',
+    // zIndex: 1,
+  },
+  calIconstyle: {
+    maxWidth: '90%',
+    zIndex: 1,
+    // position: 'absolute',
+    top: 0,
+    right: 0,
   },
 });
 

@@ -2,10 +2,9 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-
 function Addinfo() {
   return (
-    <View style={{marginTop: 40, marginBottom: 50}}>
+    <View style={styles.parentchild}>
       <Text style={styles.addInfo}>Additional informations</Text>
       <View style={styles.info}>
         <TouchableOpacity style={styles.btninfo}>
@@ -26,6 +25,7 @@ function Addinfo() {
 }
 
 const styles = StyleSheet.create({
+  parentchild: {marginTop: 40, marginBottom: 50},
   addInfo: {
     fontFamily: 'Varela-Regular',
     fontSize: 18,
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   info: {
     maxWidth: '100%',
     marginTop: 10,
-    // marginLeft: -10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

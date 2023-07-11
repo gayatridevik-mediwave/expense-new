@@ -38,7 +38,7 @@ function AddCategory({handleClose, isVisible}: any) {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             {/* Back */}
-            <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
+            <View style={styles.closedesign}>
               <Pressable
                 onPress={() => {
                   handleClose();
@@ -175,6 +175,7 @@ function AddCategory({handleClose, isVisible}: any) {
 export default AddCategory;
 
 const styles = StyleSheet.create({
+  closedesign: {flexDirection: 'row', justifyContent: 'flex-end'},
   closeBtn: {
     width: 30,
     height: 30,

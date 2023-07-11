@@ -2,18 +2,16 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 
-function Toggle(navigation: any) {
+function Toggle({val, goBack, navigation}: any) {
   const [isExpense, setExpense] = useState(true);
   return (
     <>
       <View style={styles.headingexpense}>
         {/* <Button onPress={() => navigation.goBack()} title="hello world" /> */}
-        <TouchableOpacity
-          style={styles.arrowicon}
-          onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.arrowicon} onPress={goBack}>
           <Icon name="arrow-left-l" size={26} color="#fff" />
         </TouchableOpacity>
-        <Text style={styles.expense}>Add expenses</Text>
+        <Text style={styles.expense}>{val}</Text>
       </View>
       <View style={styles.expincome}>
         <View style={styles.toggleexpense}>

@@ -28,7 +28,6 @@ function Datepicker() {
         <View>
           <TouchableOpacity style={styles.outerCalendar} onPress={handleclick}>
             <View style={styles.calborder} />
-
             <Calendardate style={styles.calendar} />
           </TouchableOpacity>
         </View>
@@ -36,6 +35,16 @@ function Datepicker() {
       {showcalendar && (
         <Calendar
           style={styles.calIconstyle}
+          theme={{
+            backgroundColor: '#ffffff',
+            calendarBackground: '#ffffff',
+            textSectionTitleColor: '#b6c1cd',
+            selectedDayBackgroundColor: '#00adf5',
+            selectedDayTextColor: '#ffffff',
+            todayTextColor: '#00adf5',
+            dayTextColor: '#2d4150',
+            textDisabledColor: '#d9e',
+          }}
           onDayPress={day => {
             setSelected(day.dateString);
           }}
@@ -53,6 +62,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    position: 'relative',
   },
   calborder: {
     borderWidth: 3,
@@ -64,6 +74,7 @@ const styles = StyleSheet.create({
   },
   calendar: {
     position: 'absolute',
+    zIndex: 1,
     width: 18,
     height: 18,
     top: 10,

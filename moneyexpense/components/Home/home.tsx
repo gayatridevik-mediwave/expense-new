@@ -19,6 +19,9 @@ function Home({navigation}: any) {
   const onPressAddbtn = () => {
     navigation.navigate('AddExpense');
   };
+  const handleStatistics = () => {
+    navigation.navigate('Statistics');
+  };
 
   return (
     <>
@@ -36,15 +39,15 @@ function Home({navigation}: any) {
             <Displayamt />
             <Card />
             <Addinfo />
-            {/* <Button
-              title="first Screen"
-              onPress={() => navigation.navigate('Design')}
-            /> */}
           </View>
         </ScrollView>
       </ImageBackground>
 
-      <Footer onPressAddbtn={onPressAddbtn} />
+      <Footer
+        // onHomebtn={onHomebtn}
+        onPressAddbtn={onPressAddbtn}
+        handleStatistics={handleStatistics}
+      />
     </>
   );
 }
