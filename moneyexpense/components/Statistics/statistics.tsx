@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ImageBackground, ScrollView, StyleSheet} from 'react-native';
 import Toggle from '../Toggle/toggle';
 import Footer from '../Footer/footer';
@@ -14,6 +14,35 @@ function Statistics(this: any, {navigation}: any) {
   const onPressAddbtn = () => {
     navigation.navigate('AddExpense');
   };
+  const labelExpense = [
+    {x: '20%', y: 35},
+    {x: '24%', y: 40},
+    {x: '40%', y: 55},
+    {x: '16%', y: 20},
+    {x: '30%', y: 70},
+  ];
+
+  const labelIncome = [
+    {x: '15%', y: 35},
+    {x: '30%', y: 40},
+    {x: '45%', y: 55},
+    {x: '25%', y: 20},
+    {x: '50%', y: 70},
+  ];
+  const [isExpense, setExpense] = useState(true);
+  const colorExpense = ['#E85D04', '#FAA307', '#FFBA08', 'gold', '#DC2F02'];
+  const colorIncome = ['blue', 'navy', 'indigo', 'purple', '#4361EE'];
+
+  const textColor = 'red';
+  const textIncome = 'navy';
+
+  const onHandleExpense = () => {
+    setExpense(true);
+  };
+
+  const onHandleIncome = () => {
+    setExpense(false);
+  };
 
   return (
     <>
@@ -22,8 +51,18 @@ function Statistics(this: any, {navigation}: any) {
         resizeMode="cover"
         source={require('../../assets/background.png')}>
         <ScrollView>
-          <Toggle val="Statistics" goBack={() => navigation.goBack()} />
-          <Charts />
+          <Toggle
+            isExpense={isExpense}
+            val="Statistics"
+            goBack={() => navigation.goBack()}
+            onHandleExpense={onHandleExpense}
+            onHandleIncome={onHandleIncome}
+          />
+          <Charts
+            textColor={isExpense ? textColor : textIncome}
+            labelData={isExpense ? labelExpense : labelIncome}
+            colorExpense={isExpense ? colorExpense : colorIncome}
+          />
         </ScrollView>
       </ImageBackground>
       <Footer

@@ -8,17 +8,21 @@ function ChartCategory() {
   // console.log('display', ChartCategoryList);
   return (
     <View>
-      {ChartCategoryList.map((item, index) => {
+      {ChartCategoryList.map((item, idx) => {
         return (
           <>
-            <View style={styles.innercard}>
-              <View key={index} style={styles.splitcard}>
+            <View key={idx} style={styles.innercard}>
+              <View style={styles.splitcard}>
                 <View
                   style={[
                     styles.backcoloricon,
-                    {backgroundColor: item.colorIcon},
+                    {
+                      backgroundColor: item.colorIcon,
+                      borderColor: item.borderColor,
+                      borderWidth: 3,
+                    },
                   ]}>
-                  <Icon name={item.catIcon} size={35} color="#fff" />
+                  <Icon name={item.catIcon} size={25} color="#fff" />
                 </View>
                 <View>
                   <Text style={styles.amountTitle}>{item.catTitle}</Text>

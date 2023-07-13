@@ -34,11 +34,15 @@ function Card() {
                         <View
                           style={[
                             styles.backcoloricon,
-                            {backgroundColor: category.colorIcon},
+                            {
+                              backgroundColor: category.colorIcon,
+                              borderColor: category.borderColor,
+                              borderWidth: 3,
+                            },
                           ]}>
                           <Icon
                             name={category.catIcon}
-                            size={35}
+                            size={25}
                             color="#fff"
                           />
                         </View>

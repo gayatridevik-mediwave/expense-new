@@ -11,6 +11,7 @@ const MonenyDetails = [
         catTitle: 'Account',
         catAmount: '5,000',
         colorIcon: '#3AE2C4',
+        borderColor: '#8EECF5',
         colorPattern: '#005257',
       },
       {
@@ -19,6 +20,7 @@ const MonenyDetails = [
         catTitle: 'Food',
         catAmount: '700',
         colorIcon: '#845FD1',
+        borderColor: '#CFBAF0',
         colorPattern: '#B91D1D',
       },
       {
@@ -27,6 +29,7 @@ const MonenyDetails = [
         catTitle: 'Travel',
         catAmount: '500',
         colorIcon: '#EF731B',
+        borderColor: '#F9C74F',
         colorPattern: '#B91D1D',
       },
     ],
@@ -43,6 +46,7 @@ const MonenyDetails = [
         catTitle: 'Account',
         catAmount: '5,000',
         colorIcon: '#3AE2C4',
+        borderColor: '#8EECF5',
         colorPattern: '#005257',
       },
       {
@@ -51,6 +55,7 @@ const MonenyDetails = [
         catTitle: 'Travel',
         catAmount: '500',
         colorIcon: '#EF731B',
+        borderColor: '#F9C74F',
         colorPattern: '#B91D1D',
       },
     ],

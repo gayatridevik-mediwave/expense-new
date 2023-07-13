@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AddExpense from './components/AddExpense/addexpense';
 import Statistics from './components/Statistics/statistics';
+import Test from './components/Test/Test';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,11 @@ function App() {
           name="Statistics"
           options={{headerShown: false}}
           component={Statistics}
+        />
+        <Stack.Screen
+          name="Test"
+          options={{headerShown: false}}
+          component={Test}
         />
       </Stack.Navigator>
     </NavigationContainer>

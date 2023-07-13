@@ -2,9 +2,26 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 
-function Toggle({val, goBack, navigation}: any) {
-  const [isExpense, setExpense] = useState(true);
+interface ToggleCompProps {
+  val?: string;
+  goBack?: any;
+  // navigation?: any;
+  isExpense?: boolean;
+  onHandleExpense?: any;
+  onHandleIncome?: any;
+}
+
+const Toggle: React.FC<ToggleCompProps> = ({
+  val,
+  goBack,
+  // navigation,
+  isExpense,
+  onHandleExpense,
+  onHandleIncome,
+}) => {
   return (
+    // () => setExpense(true)
+
     <>
       <View style={styles.headingexpense}>
         {/* <Button onPress={() => navigation.goBack()} title="hello world" /> */}
@@ -15,13 +32,13 @@ function Toggle({val, goBack, navigation}: any) {
       </View>
       <View style={styles.expincome}>
         <View style={styles.toggleexpense}>
-          <TouchableOpacity style={{}} onPress={() => setExpense(true)}>
+          <TouchableOpacity style={{}} onPress={onHandleExpense}>
             <Text
               style={[styles.togglexpense, isExpense ? styles.active : null]}>
               Expenses
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{}} onPress={() => setExpense(false)}>
+          <TouchableOpacity style={{}} onPress={onHandleIncome}>
             <Text
               style={[styles.togglexpense, isExpense ? null : styles.active]}>
               Income
@@ -31,7 +48,7 @@ function Toggle({val, goBack, navigation}: any) {
       </View>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screenimage: {
