@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Header from '../Header/header';
+import Header from '../../Header/header';
 import {
   ImageBackground,
   ScrollView,
@@ -7,13 +7,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import Addinfo from '../Addinfo/addinfo';
+import Addinfo from '../../Addinfo/addinfo';
 import Footer from '../Footer/footer';
-import Displayamt from '../Displayamt/displayamt';
-import Card from '../Card/card';
-import DateComp from '../DateComp';
+import Displayamt from '../../Displayamt/displayamt';
+import Card from '../../Card/card';
+import DateComp from '../../DateComp';
 
-const Image = require('../../assets/background.png');
+const Image = require('../../../assets/background.png');
 
 function Home({navigation}: any) {
   const onPressAddbtn = () => {

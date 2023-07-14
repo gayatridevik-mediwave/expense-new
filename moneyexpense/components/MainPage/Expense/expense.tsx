@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ImageBackground, ScrollView, StyleSheet} from 'react-native';
-import Toggle from '../Toggle/toggle';
-import ExpIncome from '../ExpIncome/expIncome';
+import Toggle from '../../Toggle/toggle';
+import ExpIncome from '../../ExpIncome/expIncome';
 import Footer from '../Footer/footer';
 
 function AddExpense({navigation}: any) {
@@ -11,21 +11,32 @@ function AddExpense({navigation}: any) {
   const onHomebtn = () => {
     navigation.navigate('Home');
   };
+  const [isExpense, setExpense] = useState(true);
+  const onHandleExpense = () => {
+    setExpense(true);
+  };
+
+  const onHandleIncome = () => {
+    setExpense(false);
+  };
 
   return (
     <>
       <ImageBackground
         style={styles.screenimage}
         resizeMode="cover"
-        source={require('../../assets/background.png')}>
+        source={require('../../../assets/background.png')}>
         <ScrollView>
           <Toggle
+            isExpense={isExpense}
             val={'Add Expenses'}
             goBack={() => {
               navigation.goBack();
             }}
+            onHandleExpense={onHandleExpense}
+            onHandleIncome={onHandleIncome}
           />
-          <ExpIncome />
+          <ExpIncome isExpense={isExpense} />
         </ScrollView>
       </ImageBackground>
       <Footer onHomebtn={onHomebtn} handleStatistics={handleStatistics} />

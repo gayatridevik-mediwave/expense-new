@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {ImageBackground, ScrollView, StyleSheet} from 'react-native';
-import Toggle from '../Toggle/toggle';
+import Toggle from '../../Toggle/toggle';
 import Footer from '../Footer/footer';
-import Charts from '../Charts/charts';
+import Charts from '../../Charts/charts';
 
 function Statistics(this: any, {navigation}: any) {
   const onHomebtn = () => {
@@ -49,7 +49,7 @@ function Statistics(this: any, {navigation}: any) {
       <ImageBackground
         style={styles.screenimage}
         resizeMode="cover"
-        source={require('../../assets/background.png')}>
+        source={require('../../../assets/background.png')}>
         <ScrollView>
           <Toggle
             isExpense={isExpense}

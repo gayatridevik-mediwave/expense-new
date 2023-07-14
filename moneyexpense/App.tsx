@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Home from './components/Home/home';
+import Home from './components/MainPage/Home/home';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AddExpense from './components/AddExpense/addexpense';
-import Statistics from './components/Statistics/statistics';
+import AddExpense from './components/MainPage/Expense/expense';
+import Statistics from './components/MainPage/Statistics/statistics';
 import Test from './components/Test/Test';
 
 const Stack = createNativeStackNavigator();

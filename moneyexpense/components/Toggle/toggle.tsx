@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Fontisto';
 
@@ -20,11 +20,8 @@ const Toggle: React.FC<ToggleCompProps> = ({
   onHandleIncome,
 }) => {
   return (
-    // () => setExpense(true)
-
     <>
       <View style={styles.headingexpense}>
-        {/* <Button onPress={() => navigation.goBack()} title="hello world" /> */}
         <TouchableOpacity style={styles.arrowicon} onPress={goBack}>
           <Icon name="arrow-left-l" size={26} color="#fff" />
         </TouchableOpacity>
@@ -32,13 +29,13 @@ const Toggle: React.FC<ToggleCompProps> = ({
       </View>
       <View style={styles.expincome}>
         <View style={styles.toggleexpense}>
-          <TouchableOpacity style={{}} onPress={onHandleExpense}>
+          <TouchableOpacity onPress={onHandleExpense}>
             <Text
               style={[styles.togglexpense, isExpense ? styles.active : null]}>
               Expenses
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{}} onPress={onHandleIncome}>
+          <TouchableOpacity onPress={onHandleIncome}>
             <Text
               style={[styles.togglexpense, isExpense ? null : styles.active]}>
               Income
@@ -86,8 +83,6 @@ const styles = StyleSheet.create({
     color: '#000',
     fontSize: 18,
     paddingHorizontal: 50,
-    // margin: 2,
-    // padding: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -97,9 +92,6 @@ const styles = StyleSheet.create({
     color: '#08979D',
     backgroundColor: '#fff',
     padding: 10,
-    // margin: 5,
-    // padding: 30,
-    // paddingHorizontal: 30,
   },
 });
 

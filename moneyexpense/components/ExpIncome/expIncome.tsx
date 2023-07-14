@@ -12,7 +12,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectDropdown from 'react-native-select-dropdown';
 import AddCategory from '../AddCategory/addcategory';
 import DateComp from '../DateComp';
-function ExpIncome() {
+
+interface ExpIncomeProps {
+  isExpense?: any;
+}
+
+const ExpIncome: React.FC<ExpIncomeProps> = ({isExpense}) => {
   const Category = [
     {key: '1', value: 'Food', image: require('../../assets/food.png')},
     {key: '2', value: 'Travel', image: require('../../assets/travel.png')},
@@ -109,15 +114,23 @@ function ExpIncome() {
             placeholder="Add your notes here..."
           />
         </View>
-        <View>
-          <TouchableOpacity style={styles.btnback}>
-            <Text style={styles.addincomebtn}>Add income</Text>
-          </TouchableOpacity>
-        </View>
+        {isExpense ? (
+          <View>
+            <TouchableOpacity style={styles.btnback}>
+              <Text style={styles.addincomebtn}>Add Expense</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View>
+            <TouchableOpacity style={styles.btnback}>
+              <Text style={styles.addincomebtn}>Add Income</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   dropdownBtnStyle: {
