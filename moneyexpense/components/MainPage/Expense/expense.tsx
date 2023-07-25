@@ -11,6 +11,10 @@ function AddExpense({navigation}: any) {
   const onHomebtn = () => {
     navigation.navigate('Home');
   };
+  const navigateProfile = () => {
+    navigation.navigate('Profile');
+  };
+
   const [isExpense, setExpense] = useState(true);
   const onHandleExpense = () => {
     setExpense(true);
@@ -33,13 +37,18 @@ function AddExpense({navigation}: any) {
             goBack={() => {
               navigation.goBack();
             }}
+            show={true}
             onHandleExpense={onHandleExpense}
             onHandleIncome={onHandleIncome}
           />
           <ExpIncome isExpense={isExpense} />
         </ScrollView>
       </ImageBackground>
-      <Footer onHomebtn={onHomebtn} handleStatistics={handleStatistics} />
+      <Footer
+        onHomebtn={onHomebtn}
+        handleStatistics={handleStatistics}
+        navigateProfile={navigateProfile}
+      />
     </>
   );
 }

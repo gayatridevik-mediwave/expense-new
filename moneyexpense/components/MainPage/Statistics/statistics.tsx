@@ -14,6 +14,9 @@ function Statistics(this: any, {navigation}: any) {
   const onPressAddbtn = () => {
     navigation.navigate('AddExpense');
   };
+  const navigateProfile = () => {
+    navigation.navigate('Profile');
+  };
   const labelExpense = [
     {x: '20%', y: 35},
     {x: '24%', y: 40},
@@ -57,6 +60,7 @@ function Statistics(this: any, {navigation}: any) {
             goBack={() => navigation.goBack()}
             onHandleExpense={onHandleExpense}
             onHandleIncome={onHandleIncome}
+            show={true}
           />
           <Charts
             textColor={isExpense ? textColor : textIncome}
@@ -69,6 +73,7 @@ function Statistics(this: any, {navigation}: any) {
         onHomebtn={onHomebtn}
         handleStatistics={handleStatistics}
         onPressAddbtn={onPressAddbtn}
+        navigateProfile={navigateProfile}
       />
     </>
   );

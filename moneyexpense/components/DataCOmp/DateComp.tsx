@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import MIcon from 'react-native-vector-icons/MaterialIcons';
 import {Calendar} from 'react-native-calendars';
+// import moment from 'moment'
 
 interface DateComponentProps {
   month?: string;
@@ -152,9 +153,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 50,
   },
-  textBlack: {
-    color: '#000',
-  },
+  // textBlack: {
+  //   color: '#000',
+  // },
   textDate: {
     fontSize: 20,
     color: '#fff',

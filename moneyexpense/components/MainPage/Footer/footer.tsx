@@ -11,10 +11,17 @@ interface FooterProps {
   onPressAddbtn?: () => any;
   handleStatistics?: () => any;
   onHomebtn?: () => any;
-  ontest?: ()=> any;
+  ontest?: () => any;
+  navigateProfile?: () => any;
 }
 
-const Footer: React.FC<FooterProps> = ({onHomebtn,onPressAddbtn, handleStatistics, ontest}) => {
+const Footer: React.FC<FooterProps> = ({
+  onHomebtn,
+  onPressAddbtn,
+  handleStatistics,
+  ontest,
+  navigateProfile,
+}) => {
   return (
     <View style={styles.background}>
       <View>
@@ -43,7 +50,7 @@ const Footer: React.FC<FooterProps> = ({onHomebtn,onPressAddbtn, handleStatistic
               <Image source={require('../../../assets/money.png')} />
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigateProfile}>
               <Image source={require('../../../assets/setting.png')} />
             </TouchableOpacity>
           </View>

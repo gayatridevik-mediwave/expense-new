@@ -11,7 +11,8 @@ import Addinfo from '../../Addinfo/addinfo';
 import Footer from '../Footer/footer';
 import Displayamt from '../../Displayamt/displayamt';
 import Card from '../../Card/card';
-import DateComp from '../../DateComp';
+import DateComp from '../../DataCOmp/DateComp';
+import moment from 'moment';
 
 const Image = require('../../../assets/background.png');
 
@@ -21,6 +22,9 @@ function Home({navigation}: any) {
   };
   const handleStatistics = () => {
     navigation.navigate('Statistics');
+  };
+  const navigateProfile = () => {
+    navigation.navigate('Profile');
   };
   const [calendarShow, setcalendarShow] = useState(false);
 
@@ -44,7 +48,7 @@ function Home({navigation}: any) {
               prevNext={true}
               show={calendarShow}
               onDateIconClick={onDateIconClick}
-              month="June 2023"
+              month={moment(new Date()).format('MMMM YYYY')}
             />
             <Displayamt />
             <Card />
@@ -57,6 +61,7 @@ function Home({navigation}: any) {
         // onHomebtn={onHomebtn}
         onPressAddbtn={onPressAddbtn}
         handleStatistics={handleStatistics}
+        navigateProfile={navigateProfile}
         ontest={() => navigation.navigate('Test')}
       />
     </>

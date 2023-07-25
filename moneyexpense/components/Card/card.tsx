@@ -1,14 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import MonenyDetails from '../../UserData/userdata';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
+const Image = require('../../assets/dog.png');
+
+console.log('....', Image);
 function Card() {
   return (
     <>
       <View style={styles.cardback}>
-        {MonenyDetails.map((item, index) => {
+        <ImageBackground
+          resizeMode="contain"
+          style={styles.screenimage}
+          source={Image}
+        />
+        <View style={{justifyContent: 'center', alignItems: 'center'}}>
+          <Text style={{fontSize: 18, color: '#000'}}>No data available</Text>
+        </View>
+        {/* {MonenyDetails.map((item, index) => {
           return (
             <View key={index}>
               <View style={styles.displayMonth}>
@@ -66,7 +77,7 @@ function Card() {
               })}
             </View>
           );
-        })}
+        })} */}
       </View>
     </>
   );
@@ -76,14 +87,20 @@ const styles = StyleSheet.create({
   cardback: {
     backgroundColor: '#fff',
     maxWidth: '100%',
+    width: '100%',
     marginTop: 20,
     borderRadius: 20,
-    padding: 20,
+    padding: 60,
     justifyContent: 'space-between',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.5,
     shadowRadius: 2,
     elevation: 2,
+  },
+  screenimage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
   },
   innercard: {
     backgroundColor: '#fff',

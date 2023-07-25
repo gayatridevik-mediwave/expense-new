@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 function Header() {
@@ -11,13 +11,17 @@ function Header() {
       </View>
 
       <View style={styles.notifyaccount}>
-        <Icon name="notifications" size={35} color="#fff" />
-        <Icon
-          style={styles.iconaccount}
-          name="account-circle"
-          size={35}
-          color="#fff"
-        />
+        <TouchableOpacity>
+          <Icon name="notifications" size={35} color="#fff" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon
+            style={styles.iconaccount}
+            name="account-circle"
+            size={35}
+            color="#fff"
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AddExpense from './components/MainPage/Expense/expense';
 import Statistics from './components/MainPage/Statistics/statistics';
+import Profile from './components/Profile/profile';
 import Test from './components/Test/Test';
 
 const Stack = createNativeStackNavigator();
@@ -12,7 +13,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Profile">
         <Stack.Screen
           name="Home"
           options={{headerShown: false}}
@@ -32,6 +33,11 @@ function App() {
           name="Test"
           options={{headerShown: false}}
           component={Test}
+        />
+        <Stack.Screen
+          name="Profile"
+          options={{headerShown: false}}
+          component={Profile}
         />
       </Stack.Navigator>
     </NavigationContainer>

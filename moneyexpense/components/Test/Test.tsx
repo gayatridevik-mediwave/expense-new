@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native';
 // import Datepicker from '../Datepicker/datepicker';
-import DateComp from '../DateComp';
+import DateComp from '../DataCOmp/DateComp';
 
 const Test = () => {
   return (

@@ -9,15 +9,16 @@ interface ToggleCompProps {
   isExpense?: boolean;
   onHandleExpense?: any;
   onHandleIncome?: any;
+  show?: boolean;
 }
 
 const Toggle: React.FC<ToggleCompProps> = ({
   val,
   goBack,
-  // navigation,
   isExpense,
   onHandleExpense,
   onHandleIncome,
+  show,
 }) => {
   return (
     <>
@@ -27,22 +28,24 @@ const Toggle: React.FC<ToggleCompProps> = ({
         </TouchableOpacity>
         <Text style={styles.expense}>{val}</Text>
       </View>
-      <View style={styles.expincome}>
-        <View style={styles.toggleexpense}>
-          <TouchableOpacity onPress={onHandleExpense}>
-            <Text
-              style={[styles.togglexpense, isExpense ? styles.active : null]}>
-              Expenses
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={onHandleIncome}>
-            <Text
-              style={[styles.togglexpense, isExpense ? null : styles.active]}>
-              Income
-            </Text>
-          </TouchableOpacity>
+      {show && (
+        <View style={styles.expincome}>
+          <View style={styles.toggleexpense}>
+            <TouchableOpacity onPress={onHandleExpense}>
+              <Text
+                style={[styles.togglexpense, isExpense ? styles.active : null]}>
+                Expenses
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onHandleIncome}>
+              <Text
+                style={[styles.togglexpense, isExpense ? null : styles.active]}>
+                Income
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      )}
     </>
   );
 };

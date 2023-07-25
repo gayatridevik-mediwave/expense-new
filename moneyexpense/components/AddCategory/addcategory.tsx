@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {Controller, useForm} from 'react-hook-form';
 import {
   Image,
   Modal,
@@ -15,6 +16,25 @@ import Close from 'react-native-vector-icons/MaterialCommunityIcons';
 import DownArrow from 'react-native-vector-icons/MaterialIcons';
 
 function AddCategory({handleClose, isVisible}: any) {
+  const {
+    control,
+    handleSubmit,
+    trigger,
+    formState: {touchedFields, errors},
+  } = useForm({
+    defaultValues: {
+      categoryTitle: '',
+      Icon: '',
+      Color: '',
+    },
+  });
+
+  // const {errors, touchedFields} = formState;
+  // const {isTouched} = fieldState;
+
+  console.log('checking', touchedFields);
+
+  const onSubmit = handleSubmit(data => console.log(data));
   const Category = [
     {key: '1', value: 'Food', image: require('../../assets/food.png')},
     {key: '2', value: 'Travel', image: require('../../assets/travel.png')},
@@ -58,111 +78,176 @@ function AddCategory({handleClose, isVisible}: any) {
             {/* Body */}
             <View>
               <Text style={styles.callexpense}>Category title</Text>
-
-              <TextInput
-                style={[styles.amountInput, styles.palceholderText]}
-                placeholder="Enter the Category title"
+              <Controller
+                control={control}
+                rules={{
+                  required: true,
+                }}
+                render={({
+                  field: {onChange, onBlur, value},
+                  fieldState: {isTouched},
+                }) => {
+                  console.log('ti', isTouched, errors);
+                  return (
+                    <>
+                      <TextInput
+                        // onChangeText={onChange}
+                        onBlur={onBlur}
+                        value={value}
+                        style={[styles.amountInput, styles.palceholderText]}
+                        placeholder="Enter the Category title"
+                        onChangeText={() => {
+                          trigger('categoryTitle');
+                        }}
+                      />
+                      {errors.categoryTitle && (
+                        <Text style={styles.errormessage}>
+                          Cateogry Title is required.
+                        </Text>
+                      )}
+                    </>
+                  );
+                }}
+                name="categoryTitle"
               />
             </View>
 
             <View>
               <Text style={styles.callexpense}>Choose icon</Text>
               <View style={styles.selectDropdown}>
-                <SelectDropdown
-                  data={Category}
-                  onSelect={(selectedItem, index) => {
-                    console.log(selectedItem, index);
+                <Controller
+                  control={control}
+                  rules={{
+                    required: true,
                   }}
-                  buttonStyle={styles.dropdownBtnStyle}
-                  renderCustomizedButtonChild={selectedItem => {
-                    return (
-                      <View style={styles.dropdownBtnChildStyle}>
-                        {selectedItem ? (
-                          <Image
-                            source={selectedItem.image}
-                            style={styles.dropdownBtnImage}
-                          />
-                        ) : null}
-                        <Text style={styles.dropdownBtnTxt}>
-                          {selectedItem ? selectedItem.value : 'Choose icon'}
-                        </Text>
-                        <DownArrow
-                          name="arrow-drop-down"
-                          style={styles.downarrow}
-                          size={26}
-                          color="#08979D"
-                        />
-                      </View>
-                    );
-                  }}
-                  dropdownStyle={styles.dropdownDropdownStyle}
-                  renderCustomizedRowChild={item => {
-                    return (
-                      <View style={styles.dropdownRowChildStyle}>
-                        <Image
-                          source={item.image}
-                          style={styles.dropdownRowImage}
-                        />
-                        <Text style={styles.dropdownRowTxt}>{item.value}</Text>
-                      </View>
-                    );
-                  }}
+                  render={({field: {onChange, onBlur}}) => (
+                    <SelectDropdown
+                      data={Category}
+                      onBlur={onBlur}
+                      onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index);
+                        onChange(selectedItem);
+                      }}
+                      buttonStyle={styles.dropdownBtnStyle}
+                      renderCustomizedButtonChild={selectedItem => {
+                        return (
+                          <View style={styles.dropdownBtnChildStyle}>
+                            {selectedItem ? (
+                              <Image
+                                source={selectedItem.image}
+                                style={styles.dropdownBtnImage}
+                              />
+                            ) : null}
+                            <Text style={styles.dropdownBtnTxt}>
+                              {selectedItem
+                                ? selectedItem.value
+                                : 'Choose icon'}
+                            </Text>
+                            <DownArrow
+                              name="arrow-drop-down"
+                              style={styles.downarrow}
+                              size={26}
+                              color="#08979D"
+                            />
+                          </View>
+                        );
+                      }}
+                      dropdownStyle={styles.dropdownDropdownStyle}
+                      renderCustomizedRowChild={item => {
+                        return (
+                          <View style={styles.dropdownRowChildStyle}>
+                            <Image
+                              source={item.image}
+                              style={styles.dropdownRowImage}
+                            />
+                            <Text style={styles.dropdownRowTxt}>
+                              {item.value}
+                            </Text>
+                          </View>
+                        );
+                      }}
+                    />
+                  )}
+                  name="Icon"
                 />
+                {errors.Icon && (
+                  <Text style={styles.errormessage}>Icon is required.</Text>
+                )}
               </View>
             </View>
 
             <View>
               <Text style={styles.callexpense}>Choose color</Text>
               <View style={styles.selectDropdown}>
-                <SelectDropdown
-                  data={Color}
-                  onSelect={(selectedItem, index) => {
-                    console.log(selectedItem, index);
+                <Controller
+                  control={control}
+                  rules={{
+                    required: true,
                   }}
-                  buttonStyle={styles.dropdownBtnStyle}
-                  renderCustomizedButtonChild={selectedItem => {
-                    return (
-                      <View style={styles.dropdownBtnChildStyle}>
-                        {selectedItem ? (
-                          <View
-                            style={[
-                              styles.dropdownRowImage,
-                              {backgroundColor: selectedItem.color},
-                            ]}
-                          />
-                        ) : null}
-                        <Text style={styles.dropdownBtnTxt}>
-                          {selectedItem ? selectedItem.value : 'Choose color'}
-                        </Text>
-                        <DownArrow
-                          name="arrow-drop-down"
-                          style={styles.downarrow}
-                          size={26}
-                          color="#08979D"
-                        />
-                      </View>
-                    );
-                  }}
-                  dropdownStyle={styles.dropdownDropdownStyle}
-                  renderCustomizedRowChild={item => {
-                    return (
-                      <View style={styles.dropdownRowChildStyle}>
-                        <View
-                          style={[
-                            styles.dropdownRowImage,
-                            {backgroundColor: item.color},
-                          ]}
-                        />
-                        <Text style={styles.dropdownRowTxt}>{item.value}</Text>
-                      </View>
-                    );
-                  }}
+                  render={({field: {onChange, onBlur}}) => (
+                    <SelectDropdown
+                      data={Color}
+                      onBlur={onBlur}
+                      onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index);
+                        onChange(selectedItem);
+                      }}
+                      buttonStyle={styles.dropdownBtnStyle}
+                      renderCustomizedButtonChild={selectedItem => {
+                        return (
+                          <View style={styles.dropdownBtnChildStyle}>
+                            {selectedItem ? (
+                              <View
+                                style={[
+                                  styles.dropdownRowImage,
+                                  {backgroundColor: selectedItem.color},
+                                ]}
+                              />
+                            ) : null}
+                            <Text style={styles.dropdownBtnTxt}>
+                              {selectedItem
+                                ? selectedItem.value
+                                : 'Choose color'}
+                            </Text>
+                            <DownArrow
+                              name="arrow-drop-down"
+                              style={styles.downarrow}
+                              size={26}
+                              color="#08979D"
+                            />
+                          </View>
+                        );
+                      }}
+                      dropdownStyle={styles.dropdownDropdownStyle}
+                      renderCustomizedRowChild={item => {
+                        return (
+                          <View style={styles.dropdownRowChildStyle}>
+                            <View
+                              style={[
+                                styles.dropdownRowImage,
+                                {backgroundColor: item.color},
+                              ]}
+                            />
+                            <Text style={styles.dropdownRowTxt}>
+                              {item.value}
+                            </Text>
+                          </View>
+                        );
+                      }}
+                    />
+                  )}
+                  name="Color"
                 />
+                {errors.Color && (
+                  <Text style={styles.errormessage}>Color is required.</Text>
+                )}
               </View>
             </View>
 
             <View>
-              <TouchableOpacity style={styles.btnback}>
+              <TouchableOpacity
+                onPress={handleSubmit(onSubmit)}
+                style={styles.btnback}>
                 <Text style={styles.addincomebtn}>Add category</Text>
               </TouchableOpacity>
             </View>
@@ -180,6 +265,10 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     backgroundColor: '#F9F9F9',
+  },
+  errormessage: {
+    marginTop: 5,
+    color: '#C1121F',
   },
   btnback: {
     marginTop: 40,
