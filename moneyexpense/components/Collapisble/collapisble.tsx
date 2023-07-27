@@ -1,14 +1,20 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {Fragment} from 'react';
 
-import {ImageBackground, Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import ProfileData from '../../UserData/profileData';
 
 function Collapisble() {
   const Image = require('../../assets/next.png');
   return (
     <View style={styles.cardback}>
-      <Pressable style={styles.innercard}>
+      <TouchableOpacity style={styles.innercard}>
         <View style={styles.innercrdbtn}>
           <View style={styles.alignDesign}>
             <View>
@@ -24,19 +30,19 @@ function Collapisble() {
             </View>
             <View style={{marginLeft: 10}}>
               <Text style={styles.TextDesign}>alandonald27</Text>
-              <Text>alandonald27@gmail.com</Text>
+              <Text style={{color: '#000'}}>alandonald27@gmail.com</Text>
             </View>
           </View>
           <View>
             <ImageBackground style={{width: 11, height: 15}} source={Image} />
           </View>
         </View>
-      </Pressable>
+      </TouchableOpacity>
 
       <View>
-        {ProfileData.map(item => {
+        {ProfileData.map((item, idx) => {
           return (
-            <>
+            <Fragment key={idx}>
               <Text style={[styles.TextDesign, {marginBottom: 10}]}>
                 {item.title}
               </Text>
@@ -44,7 +50,7 @@ function Collapisble() {
                 {item?.detailsAccount.map((category, index) => {
                   return (
                     <View key={index}>
-                      <View
+                      <TouchableOpacity
                         style={[
                           styles.innercrdbtn,
                           {
@@ -69,12 +75,12 @@ function Collapisble() {
                             source={Image}
                           />
                         </View>
-                      </View>
+                      </TouchableOpacity>
                     </View>
                   );
                 })}
               </View>
-            </>
+            </Fragment>
           );
         })}
       </View>

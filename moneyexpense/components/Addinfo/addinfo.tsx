@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   btninfo: {
     maxWidth: '100%',
     maxHeight: '100%',
-    width: 160,
+    width: 150,
     height: 100,
     backgroundColor: '#fff',
     borderRadius: 10,

@@ -2,17 +2,18 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-
 function Displayamt() {
+  const isValue = false;
+
   // const [amount] = useState({
   //   income: '15,000',
   //   expense: '10,000',
   //   total: '5,000',
   // });
   const [amount] = useState({
-    income: '0.00',
-    expense: '0.00',
-    total: '0.00',
+    income: isValue ? '15,000' : '0.00',
+    expense: isValue ? '10,000' : '0.00',
+    total: isValue ? '5,000' : '0.00',
   });
   return (
     <View>

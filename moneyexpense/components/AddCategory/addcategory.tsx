@@ -19,8 +19,7 @@ function AddCategory({handleClose, isVisible}: any) {
   const {
     control,
     handleSubmit,
-    trigger,
-    formState: {touchedFields, errors},
+    formState: {errors},
   } = useForm({
     defaultValues: {
       categoryTitle: '',
@@ -32,7 +31,7 @@ function AddCategory({handleClose, isVisible}: any) {
   // const {errors, touchedFields} = formState;
   // const {isTouched} = fieldState;
 
-  console.log('checking', touchedFields);
+  // console.log('checking', touchedFields);
 
   const onSubmit = handleSubmit(data => console.log(data));
   const Category = [
@@ -83,22 +82,16 @@ function AddCategory({handleClose, isVisible}: any) {
                 rules={{
                   required: true,
                 }}
-                render={({
-                  field: {onChange, onBlur, value},
-                  fieldState: {isTouched},
-                }) => {
-                  console.log('ti', isTouched, errors);
+                render={({field: {onChange, onBlur, value}}) => {
                   return (
                     <>
                       <TextInput
-                        // onChangeText={onChange}
+                        onChangeText={onChange}
                         onBlur={onBlur}
                         value={value}
                         style={[styles.amountInput, styles.palceholderText]}
                         placeholder="Enter the Category title"
-                        onChangeText={() => {
-                          trigger('categoryTitle');
-                        }}
+                        placeholderTextColor="grey"
                       />
                       {errors.categoryTitle && (
                         <Text style={styles.errormessage}>
@@ -284,6 +277,7 @@ const styles = StyleSheet.create({
   callexpense: {
     marginTop: 20,
     fontSize: 18,
+    color: '#4D4D4D',
   },
   selectDropdown: {
     marginTop: 20,
@@ -295,8 +289,8 @@ const styles = StyleSheet.create({
   },
   palceholderText: {
     paddingHorizontal: 20,
-    fontFamily: 'Varela-Regular',
     fontSize: 18,
+    color: '#4D4D4D',
   },
   amountInput: {
     backgroundColor: '#fff',

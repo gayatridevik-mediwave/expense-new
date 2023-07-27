@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {Fragment} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ChartCategoryList from '../../UserData/datachart';
@@ -10,8 +10,8 @@ function ChartCategory() {
     <View>
       {ChartCategoryList.map((item, idx) => {
         return (
-          <>
-            <View key={idx} style={styles.innercard}>
+          <Fragment key={idx}>
+            <View style={styles.innercard}>
               <View style={styles.splitcard}>
                 <View
                   style={[
@@ -33,7 +33,7 @@ function ChartCategory() {
                 <Text style={styles.textamount}>₹ {item.catAmount}</Text>
               </View>
             </View>
-          </>
+          </Fragment>
         );
       })}
     </View>
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
   backcoloricon: {
     width: 48,
     height: 48,
-    // backgroundColor: 'purple',
     borderRadius: 30,
     flexDirection: 'row',
     justifyContent: 'center',

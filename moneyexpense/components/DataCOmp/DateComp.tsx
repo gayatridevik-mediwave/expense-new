@@ -45,18 +45,18 @@ const DateComponent: React.FC<DateComponentProps> = ({
       <View style={styles.dateCenter}>
         <View style={styles.monthBlk}>
           {prevNext ? (
-            <Pressable onPress={onPressArrowLeft}>
+            <TouchableOpacity onPress={onPressArrowLeft}>
               <MIcon name="chevron-left" size={32} color="#fff" />
-            </Pressable>
+            </TouchableOpacity>
           ) : null}
           <Text style={[styles.textDate, val]}>{month}</Text>
           {prevNext ? (
-            <Pressable onPress={onPressArrowRight}>
+            <TouchableOpacity onPress={onPressArrowRight}>
               <MIcon name="chevron-right" size={32} color="#fff" />
-            </Pressable>
+            </TouchableOpacity>
           ) : null}
         </View>
-        <View>
+        <View style={{}}>
           <TouchableOpacity
             style={[
               styles.iconWrapper,
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   monthBlk: {
     flexDirection: 'row',
-    alignContent: 'center',
+    alignItems: 'center',
     justifyContent: 'space-between',
   },
   month: {

@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   togglexpense: {
     color: '#000',
     fontSize: 18,
-    paddingHorizontal: 50,
+    paddingHorizontal: 45,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

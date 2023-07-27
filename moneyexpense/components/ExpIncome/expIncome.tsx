@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import SelectDropdown from 'react-native-select-dropdown';
 import AddCategory from '../AddCategory/addcategory';
 import DateComp from '../DataCOmp/DateComp';
-import {useForm, Controller, Form} from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
 
 interface ExpIncomeProps {
   isExpense?: any;
@@ -45,7 +45,7 @@ const ExpIncome: React.FC<ExpIncomeProps> = ({isExpense}) => {
   const onSubmit = data => console.log(data);
   return (
     <View style={styles.cardback}>
-      <View style={{}}>
+      <View style={{zIndex: 2}}>
         <DateComp
           onDateIconClick={onDateIconClick}
           show={calendarShow}
@@ -68,6 +68,7 @@ const ExpIncome: React.FC<ExpIncomeProps> = ({isExpense}) => {
                 onBlur={onBlur}
                 style={[styles.amountInput, styles.palceholderText]}
                 placeholder="Enter the amount"
+                placeholderTextColor="grey"
               />
             )}
             name="firstName"
@@ -167,6 +168,7 @@ const ExpIncome: React.FC<ExpIncomeProps> = ({isExpense}) => {
                 numberOfLines={5}
                 multiline={true}
                 placeholder="Add your notes here..."
+                placeholderTextColor="grey"
               />
             )}
             name="note"
@@ -267,7 +269,7 @@ const styles = StyleSheet.create({
   callexpense: {
     marginTop: 20,
     fontSize: 18,
-    position: 'relative',
+    color: '#4D4D4D',
   },
   amountInput: {
     backgroundColor: '#fff',
@@ -302,6 +304,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontFamily: 'Varela-Regular',
     fontSize: 18,
+    color: '#4D4D4D',
   },
   selectDropdown: {
     marginTop: 20,

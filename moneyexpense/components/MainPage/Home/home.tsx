@@ -26,6 +26,10 @@ function Home({navigation}: any) {
   const navigateProfile = () => {
     navigation.navigate('Profile');
   };
+  const ontest = () => {
+    navigation.navigate('Test');
+  };
+
   const [calendarShow, setcalendarShow] = useState(false);
 
   const onDateIconClick = () => {
@@ -58,11 +62,10 @@ function Home({navigation}: any) {
       </ImageBackground>
 
       <Footer
-        // onHomebtn={onHomebtn}
         onPressAddbtn={onPressAddbtn}
         handleStatistics={handleStatistics}
         navigateProfile={navigateProfile}
-        ontest={() => navigation.navigate('Test')}
+        ontest={ontest}
       />
     </>
   );
@@ -80,7 +83,7 @@ const styles = StyleSheet.create({
   },
   manage: {
     marginTop: 20,
-    fontSize: 33,
+    fontSize: 34,
     color: '#fff',
     textAlign: 'left',
   },

@@ -1,84 +1,92 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import MonenyDetails from '../../UserData/userdata';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Image = require('../../assets/dog.png');
 
-console.log('....', Image);
 function Card() {
+  const [showCard] = useState(true);
+
   return (
     <>
-      <View style={styles.cardback}>
-        <ImageBackground
-          resizeMode="contain"
-          style={styles.screenimage}
-          source={Image}
-        />
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={{fontSize: 18, color: '#000'}}>No data available</Text>
+      {showCard ? (
+        <View style={[styles.cardback, {padding: 60}]}>
+          <ImageBackground
+            resizeMode="contain"
+            style={styles.screenimage}
+            source={Image}
+          />
+          <View style={{justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{fontSize: 18, color: '#000'}}>No data available</Text>
+          </View>
         </View>
-        {/* {MonenyDetails.map((item, index) => {
-          return (
-            <View key={index}>
-              <View style={styles.displayMonth}>
-                <Text style={styles.displayContent}>{item.dateMonthYear}</Text>
-              </View>
-
-              <View style={styles.cardDesign}>
-                <View style={styles.incomeDesgin}>
-                  <Text style={styles.accountText}>Income</Text>
-                  <Text style={styles.incomeText}>₹ {item.inAmt}</Text>
+      ) : (
+        <View style={[styles.cardback]}>
+          {MonenyDetails.map((item, index) => {
+            return (
+              <View key={index}>
+                <View style={styles.displayMonth}>
+                  <Text style={styles.displayContent}>
+                    {item.dateMonthYear}
+                  </Text>
                 </View>
 
-                <View style={styles.expenseDesgin}>
-                  <Text style={styles.accountText}>Expenses</Text>
-                  <Text style={styles.expenseText}>₹ {item.expAmt}</Text>
+                <View style={styles.cardDesign}>
+                  <View style={styles.incomeDesgin}>
+                    <Text style={styles.accountText}>Income</Text>
+                    <Text style={styles.incomeText}>₹ {item.inAmt}</Text>
+                  </View>
+
+                  <View style={styles.expenseDesgin}>
+                    <Text style={styles.accountText}>Expenses</Text>
+                    <Text style={styles.expenseText}>₹ {item.expAmt}</Text>
+                  </View>
                 </View>
-              </View>
-              {item.categoryAmount.map((category, idx) => {
-                return (
-                  <View key={idx}>
-                    <View style={styles.innercard}>
-                      <View style={styles.innercrdbtn}>
-                        <View
-                          style={[
-                            styles.backcoloricon,
-                            {
-                              backgroundColor: category.colorIcon,
-                              borderColor: category.borderColor,
-                              borderWidth: 3,
-                            },
-                          ]}>
-                          <Icon
-                            name={category.catIcon}
-                            size={25}
-                            color="#fff"
-                          />
+                {item.categoryAmount.map((category, idx) => {
+                  return (
+                    <View key={idx}>
+                      <View style={styles.innercard}>
+                        <View style={styles.innercrdbtn}>
+                          <View
+                            style={[
+                              styles.backcoloricon,
+                              {
+                                backgroundColor: category.colorIcon,
+                                borderColor: category.borderColor,
+                                borderWidth: 3,
+                              },
+                            ]}>
+                            <Icon
+                              name={category.catIcon}
+                              size={25}
+                              color="#fff"
+                            />
+                          </View>
+                          <Text style={styles.amtdisplay}>
+                            {category.catTitle}
+                          </Text>
                         </View>
-                        <Text style={styles.amtdisplay}>
-                          {category.catTitle}
-                        </Text>
-                      </View>
 
-                      <View>
-                        <Text
-                          style={{
-                            fontSize: 18,
-                            color: category.colorPattern,
-                          }}>
-                          ₹ {category.catAmount}
-                        </Text>
+                        <View>
+                          <Text
+                            style={{
+                              fontSize: 18,
+                              color: category.colorPattern,
+                            }}>
+                            ₹ {category.catAmount}
+                          </Text>
+                        </View>
                       </View>
                     </View>
-                  </View>
-                );
-              })}
-            </View>
-          );
-        })} */}
-      </View>
+                  );
+                })}
+              </View>
+            );
+          })}
+        </View>
+      )}
     </>
   );
 }
@@ -90,7 +98,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 20,
     borderRadius: 20,
-    padding: 60,
+    padding: 20,
     justifyContent: 'space-between',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.5,

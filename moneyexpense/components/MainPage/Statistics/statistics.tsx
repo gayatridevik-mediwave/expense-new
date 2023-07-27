@@ -17,6 +17,9 @@ function Statistics(this: any, {navigation}: any) {
   const navigateProfile = () => {
     navigation.navigate('Profile');
   };
+  const ontest = () => {
+    navigation.navigate('Test');
+  };
   const labelExpense = [
     {x: '20%', y: 35},
     {x: '24%', y: 40},
@@ -74,6 +77,7 @@ function Statistics(this: any, {navigation}: any) {
         handleStatistics={handleStatistics}
         onPressAddbtn={onPressAddbtn}
         navigateProfile={navigateProfile}
+        ontest={ontest}
       />
     </>
   );

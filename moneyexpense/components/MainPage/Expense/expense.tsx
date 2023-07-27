@@ -5,14 +5,20 @@ import ExpIncome from '../../ExpIncome/expIncome';
 import Footer from '../Footer/footer';
 
 function AddExpense({navigation}: any) {
-  const handleStatistics = () => {
-    navigation.navigate('Statistics');
-  };
   const onHomebtn = () => {
     navigation.navigate('Home');
   };
+  const handleStatistics = () => {
+    navigation.navigate('Statistics');
+  };
+  const onPressAddbtn = () => {
+    navigation.navigate('AddExpense');
+  };
   const navigateProfile = () => {
     navigation.navigate('Profile');
+  };
+  const ontest = () => {
+    navigation.navigate('Test');
   };
 
   const [isExpense, setExpense] = useState(true);
@@ -35,7 +41,11 @@ function AddExpense({navigation}: any) {
             isExpense={isExpense}
             val={'Add Expenses'}
             goBack={() => {
-              navigation.goBack();
+              if (navigation.canGoBack()) {
+                navigation.goBack();
+              } else {
+                navigation.navigate('Home');
+              }
             }}
             show={true}
             onHandleExpense={onHandleExpense}
@@ -48,6 +58,8 @@ function AddExpense({navigation}: any) {
         onHomebtn={onHomebtn}
         handleStatistics={handleStatistics}
         navigateProfile={navigateProfile}
+        onPressAddbtn={onPressAddbtn}
+        ontest={ontest}
       />
     </>
   );

@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {ImageBackground, ScrollView, StyleSheet} from 'react-native';
-import Footer from '../MainPage/Footer/footer';
-import Toggle from '../Toggle/toggle';
-import Collapisble from '../Collapisble/collapisble';
+import Footer from '../Footer/footer';
+import Toggle from '../../Toggle/toggle';
+import Collapisble from '../../Collapisble/collapisble';
 
 function Profile(this: any, {navigation}: any) {
   const onHomebtn = () => {
@@ -19,13 +19,16 @@ function Profile(this: any, {navigation}: any) {
   const navigateProfile = () => {
     navigation.navigate('Profile');
   };
+  const ontest = () => {
+    navigation.navigate('Test');
+  };
 
   return (
     <>
       <ImageBackground
         style={styles.screenimage}
         resizeMode="cover"
-        source={require('../../assets/background.png')}>
+        source={require('../../../assets/background.png')}>
         <ScrollView>
           <Toggle val="Profile" goBack={() => navigation.goBack()} />
           <Collapisble />
@@ -36,6 +39,7 @@ function Profile(this: any, {navigation}: any) {
         handleStatistics={handleStatistics}
         onPressAddbtn={onPressAddbtn}
         navigateProfile={navigateProfile}
+        ontest={ontest}
       />
     </>
   );
