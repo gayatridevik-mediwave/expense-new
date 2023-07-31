@@ -35,16 +35,16 @@ const Footer: React.FC<FooterProps> = ({
               <Image source={require('../../../assets/stack.png')} />
             </TouchableOpacity>
 
+            <TouchableOpacity onPress={onPressAddbtn}>
             <ImageBackground
               style={styles.imageback}
               source={require('../../../assets/circleback.png')}>
-              <TouchableOpacity onPress={onPressAddbtn}>
                 <Image
                   style={styles.addalign}
                   source={require('../../../assets/add.png')}
                 />
-              </TouchableOpacity>
             </ImageBackground>
+              </TouchableOpacity>
 
             <TouchableOpacity onPress={ontest}>
               <Image source={require('../../../assets/money.png')} />

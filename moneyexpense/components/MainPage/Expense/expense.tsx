@@ -41,11 +41,7 @@ function AddExpense({navigation}: any) {
             isExpense={isExpense}
             val={'Add Expenses'}
             goBack={() => {
-              if (navigation.canGoBack()) {
-                navigation.goBack();
-              } else {
-                navigation.navigate('Home');
-              }
+              navigation.goBack();
             }}
             show={true}
             onHandleExpense={onHandleExpense}
